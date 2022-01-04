@@ -16,14 +16,15 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const remove = () =>{
-    dispatch({type: 'REMOVE'})
+  const clear = () =>{
+    dispatch({type: 'CLEAR'})
   }
 
   return (
     <AppContext.Provider
       value={{
-        ...state
+        ...state,
+        clear,
       }}
     >
       {children}
