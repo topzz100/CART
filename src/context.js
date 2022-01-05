@@ -19,12 +19,29 @@ const AppProvider = ({ children }) => {
   const clear = () =>{
     dispatch({type: 'CLEAR'})
   }
+  const remove = (id) => {
+    dispatch({type: 'REMOVE', payload: id})
+  }
+  const increase = (id) => {
+    dispatch({type : 'INCREASE', payload: id})
+  }
+
+  const decrease = (id) => {
+    dispatch({type : 'DECREASE', payload: id})
+  }
+
+  useEffect(() => {
+    dispatch({type: 'GET_TOTALS'})
+  })
 
   return (
     <AppContext.Provider
       value={{
         ...state,
         clear,
+        remove,
+        increase, 
+        decrease,
       }}
     >
       {children}
